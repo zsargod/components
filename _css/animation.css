@@ -1,0 +1,68 @@
+@import "https://animate.style/animate.min.css";
+
+[data-animation="stop"][class*="animate-"],
+[data-animation="stop"] [class*="animate-"] {
+    animation: none !important;
+}
+
+[data-animation="play"][class*="animate-"],
+[data-animation="play"] [class*="animate-"] {
+    animation-play-state: running !important;
+}
+
+[data-animation="pause"][class*="animate-"],
+[data-animation="pause"] [class*="animate-"] {
+    animation-play-state: paused !important;
+}
+
+[data-animation="reverse"][class*="animate-"],
+[data-animation="reverse"] [class*="animate-"] {
+    animation-direction: reverse !important;
+}
+
+[class*="animate-"] {
+    animation-fill-mode: forwards;
+}
+
+@keyframes end {}
+@keyframes exit {}
+@keyframes start {}
+
+/*
+    https://animista.net
+    https://animate.style
+    https://web.dev/learn/css/animations
+*/
+
+@keyframes inflate {
+    from{
+        height: 0;
+    }
+    to {
+        height: var(--inflate-height);
+    }
+}
+
+@keyframes deflate {
+    to {
+        height: 0;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
+}
