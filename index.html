@@ -22,7 +22,8 @@
             console.log(value);
             return value;
         };
-        const $load = el => Promise.resolve((el.querySelector(':scope > *'))?.remove());
+        const $load = (el, component) => Promise.resolve((el.querySelector(':scope > *'))?.remove())
+                                                 .then(() => $fetchAsText(component));
 
         document.addEventListener('alpine:init', () => {
             Alpine.directive('destroy', (el, {expression}, {evaluateLater, cleanup}) => {
@@ -34,6 +35,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-<div x-html="$fetchAsText('test/index.html')"></div>
+<div x-html="$fetchAsText('test')"></div>
 </body>
 </html>
