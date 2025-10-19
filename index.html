@@ -6,35 +6,16 @@
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
     <title>Components</title>
 
-    <link href="_css/index.css" rel="stylesheet">
+    <link href="@css/index.css" rel="stylesheet">
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="js/extend.js"></script>
     <script>
-        const $import = url => import(url);
-        const $fetchAsText = (url, options) => url ? fetch(url, options).then(r => r.text()) : null;
-        const $fetchAsJson = (url, options) => url ? fetch(url, options).then(r => r.json()) : null;
-        const $assign = (obj = {}, promise = {}) => {
-            const reactiveData = Alpine.reactive(obj);
-            Promise.resolve(promise).then(r => [].concat(r).forEach(d => Object.assign(reactiveData, d.default ? d.default() : d)));
-            return reactiveData;
-        };
-        const $log = value => {
-            console.log(value);
-            return value;
-        };
-        const $load = (el, component) => Promise.resolve((el.querySelector(':scope > *'))?.remove())
-                                                 .then(() => $fetchAsText(component));
-
-        document.addEventListener('alpine:init', () => {
-            Alpine.directive('destroy', (el, {expression}, {evaluateLater, cleanup}) => {
-                const clean = evaluateLater(expression);
-                cleanup(() => clean());
-            });
-        });
+        const $import = module => import(module);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-<div x-html="$fetchAsText('test')"></div>
+<body x-cloak>
+    <div x-html="$fetchAsText('test')"></div>
 </body>
 </html>

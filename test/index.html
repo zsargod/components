@@ -1,2 +1,4 @@
-<div x-data="{component:'test/loader.html'}"
-     x-html="$load($el,component)"></div>
+<div x-data="{template:'test/loader.html'}"
+     x-html="$load($el,template)"></div>
+
+<div x-html="$fetchAsText('datepicker')"></div>

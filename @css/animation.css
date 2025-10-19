@@ -1,0 +1,15 @@
+@import "https://animate.style/animate.min.css";
+
+[class*="animate-"] {
+    animation-fill-mode: forwards;
+}
+
+@keyframes end {}
+@keyframes exit {}
+@keyframes start {}
+
+/*
+    https://animista.net
+    https://animate.style
+    https://web.dev/learn/css/animations
+*/
