@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html x-data lang="en">
+<html x-data="{THEME:null,URL:$pathname()}" :class="THEME" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
-    <title>Components</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none';
+  script-src 'self' https://cdn.jsdelivr.net;
+  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+  img-src 'self' data:;
+  connect-src 'self' https://cdn.jsdelivr.net;
+  font-src 'self';
+  object-src 'none';
+  base-uri 'none';
+  frame-ancestors 'none';
+  form-action 'self';
+  upgrade-insecure-requests;">
 
-    <link href="@css/index.css" rel="stylesheet">
-
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="js/extend.js"></script>
-    <script>
-        const $import = module => import(module);
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>HTML5 Boilerplate</title>
+  <!-- Tailwind CDN -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="/js/addons.js"></script>
+  <!-- Alpine.js CDN -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    [x-cloak] {
+      display: none !important;
+    }
+  </style>
 </head>
+
 <body x-cloak>
-    <div x-html="$fetchAsText('test')"></div>
+  <div x-init="$template($el, URL+'/components/pages/index.html')">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.10/dist/basecoat.cdn.min.css">
 </body>
+
 </html>

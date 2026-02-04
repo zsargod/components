@@ -1,0 +1,34 @@
+<template x-if="load_done"
+   x-data="load({router:URL+'/js/modules/data/router.mjs',routes:URL+'/js/modules/data/routes.mjs'})">
+
+   <div x-data="router(routes())">
+
+      <nav>
+         <ul>
+            <li>
+               <a :href="ROUTE.parse('/home/:id',{params:{id:1},query:{foo:false}})" @click="$log($el.href)">Home Page
+                  1</a>
+            </li>
+            <li><a :href="ROUTE.parse('/home/2?baz=qux')">Home Page 2</a></li>
+            <li><a href="#/user/42?name=alice">User 42</a></li>
+            <li><a href="#/test/42?name=alice">test</a></li>
+            <li><a href @click.prevent="ROUTE.go('/test/500',{query:{name:'mark'}})">test</a></li>
+         </ul>
+      </nav>
+      <pre x-text="$stringify($log(ROUTE), null, 2)"></pre>
+
+      <template x-if="ROUTE.is('home')">
+         <div">HOME
+   </div>
+</template>
+
+<template x-if="ROUTE.is('test')">
+   <div">TEST</div>
+</template>
+
+<template x-if="ROUTE.is(404)">
+   <h1>404 Not Found</h1>
+</template>
+</div>
+
+</template>

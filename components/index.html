@@ -1,0 +1,7 @@
+<template x-if="load_done" x-data="load({dropdown:URL+'/js/modules/data/dropdown.mjs'})">
+   <div x-data="dropdown">
+      <button @click="dropdown_toggle" class="btn">Show</button>
+      <pre x-bind="dropdown_pre"></pre>
+      <div x-show="dropdown_open" class="bg-red-500">Hello world! <i x-init="icon($el,'amphora')"></i></div>
+   </div>
+</template>
