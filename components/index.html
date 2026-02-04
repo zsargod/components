@@ -5,3 +5,23 @@
       <div x-show="dropdown_open" class="bg-red-500">Hello world! <i x-init="icon($el,'amphora')"></i></div>
    </div>
 </template>
+
+
+<template x-if="load_done" x-data="load({api:URL+'/js/modules/data/api.mjs'})">
+   <div x-data="api" 
+        @api-start="$log('API started')"
+        @api-start="$log($event.detail)"
+        @api-chunk="$log($event.detail)"
+        @api-chunk-text="$log($event.detail)"
+        @api-response="$log($event.detail)"
+        @api-error="$log($event.detail)">
+      <div x-data="{table:[]}">
+         <button @click="api_create('api/users.json').then(api_json).then(api_set('table')).then($log)" class="btn">Fetch</button>
+         <pre x-text="$stringify(table, null, 2)"></pre>
+         <template x-for="row in table" :key="row.id">
+            <div x-text="$stringify(row)" class="text-red-500"></div>
+         </template>
+      </div>
+      
+   </div>
+</template>

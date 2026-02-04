@@ -9,6 +9,7 @@ export default (routes, strategy, base) => ({
     },
 
     init() {
+        console.log(this.$dispatch, this.$el);
         this.router_event = this.router_update.bind(this);
         this.router_update();
         window.addEventListener('popstate', this.router_event);
